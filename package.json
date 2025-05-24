@@ -1,0 +1,29 @@
+{
+  "name": "bsky_automute_bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@atproto/api": "^0.15.8",
+    "@skyware/jetstream": "^0.2.2",
+    "better-sqlite3": "^11.10.0",
+    "dotenv": "^16.5.0",
+    "node-cron": "^4.0.7",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.15.21",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
