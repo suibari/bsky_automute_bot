@@ -29,3 +29,17 @@ export async function muteInactiveUsers() {
     }
   }
 }
+
+export async function unmuteIfMuted(did: string) {
+  try {
+    const res = await agent.app.bsky.graph.getMutes()
+    const didMuted = res.data.mutes.map(m => m.did)
+
+    if (didMuted.includes(did)) {
+      await agent.app.bsky.graph.unmuteActor({ actor: did })
+      console.log(`[unmute] unmuted: ${did}`)
+    }
+  } catch (e) {
+    console.warn(`[unmute] failed for ${did}`, e)
+  }
+}
