@@ -12,7 +12,7 @@ export async function updateFollows(agent: AtpAgent, myDid: string) {
   let cursor: string | undefined = undefined
 
   while (true) {
-    const res = await agent.api.app.bsky.graph.getFollows({
+    const res = await agent.app.bsky.graph.getFollows({
       actor: myDid,
       limit: 100,
       cursor,
