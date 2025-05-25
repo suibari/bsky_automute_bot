@@ -2,12 +2,12 @@ import 'dotenv/config';
 import { muteInactiveUsers } from './mute'
 import cron from 'node-cron'
 import { startFirehose } from './firehose';
-import { getMyFollows } from './follows';
 import { agent } from './agent';
+import { startFollowUpdater } from './followCache';
 
 async function start() {
   console.log('[main] Starting Bluesky bot...')
-  await getMyFollows(agent);
+  startFollowUpdater(agent, process.env.BLUESKY_DID!);
   await startFirehose();
   console.log('[main] Connected JetStream')
 

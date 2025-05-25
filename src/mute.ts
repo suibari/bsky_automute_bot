@@ -1,7 +1,5 @@
-import AtpAgent from '@atproto/api'
 import { agent } from './agent'
 import { getInactiveUsers } from './db'
-import { getMyFollows } from './follows'
 
 const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000
 const now = Date.now()
