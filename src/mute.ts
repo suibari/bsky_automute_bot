@@ -1,11 +1,11 @@
 import { agent } from './agent'
 import { getInactiveUsers } from './db'
 
-const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000
-const now = Date.now()
-const since = now - ONE_WEEK_MS
-
 export async function muteInactiveUsers() {
+  const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000
+  const now = Date.now()
+  const since = now - ONE_WEEK_MS
+
   // アクティビティが1週間ないユーザー（null含む）を取得
   const inactiveDids = getInactiveUsers(since)
 

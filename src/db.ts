@@ -35,7 +35,7 @@ export function saveUserActivity(did: string) {
 export function getInactiveUsers(since: number): string[] {
   const stmt = db.prepare(`
     SELECT did FROM user_activity
-    WHERE last_activity IS NULL OR last_activity < ?
+    WHERE last_action_at IS NULL OR last_action_at < ?
   `)
   const rows = stmt.all(since) as { did: string }[]
   return rows.map(r => r.did)
