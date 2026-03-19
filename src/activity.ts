@@ -23,6 +23,24 @@ export async function handleEvent(evt: CommitCreateEvent<'app.bsky.feed.post' | 
       saveUserActivity(authorDid)
       unmuteIfMuted(authorDid)
     }
+    const embed = post.embed
+    if (embed) {
+      if (embed.$type === 'app.bsky.embed.record') {
+        const recordEmbed = embed as any
+        if (recordEmbed.record?.uri?.includes(myDid)) {
+          console.log(`[quote] from ${authorDid}`)
+          saveUserActivity(authorDid)
+          unmuteIfMuted(authorDid)
+        }
+      } else if (embed.$type === 'app.bsky.embed.recordWithMedia') {
+        const recordWithMediaEmbed = embed as any
+        if (recordWithMediaEmbed.record?.record?.uri?.includes(myDid)) {
+          console.log(`[quote] from ${authorDid}`)
+          saveUserActivity(authorDid)
+          unmuteIfMuted(authorDid)
+        }
+      }
+    }
   } else if (record.$type === 'app.bsky.feed.like') {
     const like = record as AppBskyFeedLike.Record
     if (like.subject.uri.includes(myDid)) {
